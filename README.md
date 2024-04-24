@@ -1,7 +1,7 @@
 ### Olá, eu sou o Guilherme Reale 👋
 
 - Desenvolvedor web
-- 📫 Contate-me: guireale@hotmail.com <-> (11)94851-1040 Whatsapp OU (13)99746-6069 para ligações
+- 📫 Contate-me: guireale@hotmail.com <-> (13)99746-6069
 - 😄 Pronouns: ele/dele
 
 <div>
