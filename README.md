@@ -1,66 +1,61 @@
 ## Guilherme Reale
 
-Dev full stack. TypeScript dos dois lados — **NestJS** e **Next.js** na maior parte do tempo,
-**React Native/Expo** quando o usuário está de pé com o celular na mão, **Prisma + PostgreSQL**
-embaixo. Trabalho em monorepo (pnpm + Turborepo) porque quase todo sistema que eu construo
-acaba tendo mais de uma cara: um painel, uma API e um app.
+Dev full stack. Trabalho com TypeScript nos dois lados: NestJS na API, Next.js no web,
+React Native/Expo no mobile, Prisma e PostgreSQL no banco. Costumo organizar os projetos
+como monorepo (pnpm + Turborepo), porque os sistemas que eu faço quase sempre têm painel,
+API e app.
 
-Fora do horário eu faço engenharia reversa de console antigo — patch de binário PowerPC,
-tradução de ROM, formato de arquivo sem documentação. Parece hobby desconexo, e não é: é o
-mesmo trabalho de ler um sistema que ninguém explicou e descobrir onde encostar a mão.
-
----
+Nas horas vagas mexo com engenharia reversa de console antigo: patch de binário, tradução
+de ROM, formato de arquivo sem documentação.
 
 ### Sistemas
 
-**[esteticaautomotiva](https://github.com/kreycai/esteticaautomotiva)** — Micro-SaaS para
-estúdio de estética automotiva. O operador mapeia os danos do carro tocando num SVG no celular,
-**no pátio, com Wi-Fi ruim** — a fila de sincronização é offline, idempotente por `clientId`, e
-classifica erro transitório (retenta) versus permanente (descarta, pra não travar a fila). O
-cliente recebe o laudo por link público e o **aceite congela o checklist** com nome, IP e
-horário. Multi-tenant desde o schema, JWT + guard por papel.
+[**esteticaautomotiva**](https://github.com/kreycai/esteticaautomotiva) — Micro-SaaS para
+estúdio de estética automotiva. O operador registra os danos do carro tocando num mapa na tela
+do celular, ainda no pátio. O Wi-Fi de galpão é ruim, então os danos entram numa fila local e
+sincronizam quando a conexão volta: cada item leva um `clientId` para o reenvio não duplicar, e
+erro 4xx é descartado em vez de retentado, senão um item travaria a fila inteira. O cliente
+recebe o laudo por link e, quando aceita, o checklist é congelado com nome, IP e horário. Os
+dados são separados por empresa desde o schema, com JWT e guard por papel.
 
-**[pastelaria_alemao](https://github.com/kreycai/pastelaria_alemao)** — Três apps (web, API,
-mobile) sobre uma base. O que muda o jogo: **o sistema conhece a receita de cada pastel**, então
-o estoque baixa por pedido e o lucro é calculado do custo real dos ingredientes, não estimado. O
-alerta de estoque só dispara quando o item *cruza* o limiar — senão o celular do dono virava spam
-e ele desligava a notificação.
+[**pastelaria_alemao**](https://github.com/kreycai/pastelaria_alemao) — Web, API e mobile sobre
+a mesma base. Cada pastel tem uma receita em gramas e cada matéria-prima tem preço por quilo,
+então o sistema calcula o custo e a margem de cada produto, dá o lucro real do dia e monta a
+lista de compras do que passou do mínimo, com estimativa de quanto vai custar. O alerta de
+estoque só dispara quando o item cruza o limiar, e não a cada pedido — do outro jeito o dono
+recebia notificação demais e desligava.
 
 ### Engenharia reversa
 
-**[vc64_240p](https://github.com/kreycai/vc64_240p)** — 240p real no Virtual Console de
-Nintendo 64 do Wii. Patch no binário do emulador (PowerPC) pra sair em 240p progressivo em vez
-de 480i, e remoção do filtro escuro que o VC aplica por cima do jogo. Confirmado em hardware
-real, em quatro builds diferentes de emulador. Os dois patches existem porque **a via
-convencional não existe**: o display copy do GX não sabe reduzir verticalmente.
+[**vc64_240p**](https://github.com/kreycai/vc64_240p) — 240p no Virtual Console de Nintendo 64
+do Wii. É um patch no binário do emulador (PowerPC) para a saída ser 240p progressivo em vez de
+480i, mais a remoção do filtro escuro que o VC aplica sobre o jogo. Testado em hardware real,
+em quatro builds diferentes de emulador. Precisou ser no binário porque o display copy do GX não
+reduz verticalmente, então não existe caminho pela API.
 
-**[gungnir-ptbr](https://github.com/kreycai/gungnir-ptbr)** — Tradução completa de um RPG de
-PSP que nunca saiu do Japão em português: 17.550 strings, dentro da ISO e dentro do EBOOT
-decriptado. A parte difícil não foi traduzir — foi que acento precisa de largura própria na
-tabela de fonte, senão sai letra colada, e que texto em português estoura ponteiro e travava o
-jogo.
+[**gungnir-ptbr**](https://github.com/kreycai/gungnir-ptbr) — Tradução completa de um RPG de PSP
+que nunca saiu do Japão em português: 17.550 strings, parte na ISO e parte no EBOOT decriptado.
+O trabalho difícil não foi traduzir. Foi descobrir que cada caractere acentuado precisa de
+largura própria na tabela da fonte, senão as letras saem coladas, e que texto em português
+estoura um limite de ponteiro e travava o jogo.
 
-**[sword-of-mana-ptbr](https://github.com/kreycai/sword-of-mana-ptbr)** — Diálogo inteiro de um
-GBA em português: 4.335 falas. Texto em português é mais longo que em inglês, e em ROM isso
-sobrescreve o vizinho. Em vez de cortar a tradução pra caber, **expandi a ROM de 16 para 32 MB e
-reescrevi a tabela de ponteiros.**
+[**sword-of-mana-ptbr**](https://github.com/kreycai/sword-of-mana-ptbr) — Diálogo inteiro de um
+jogo de GBA em português, 4.335 falas. Texto em português é mais longo que em inglês, e numa ROM
+isso sobrescreve o dado seguinte. Em vez de encurtar a tradução para caber, expandi a ROM de 16
+para 32 MB e reescrevi a tabela de ponteiros.
 
----
+### Coisas que eu levo a sério
 
-### Como eu trabalho
+Dinheiro fica em `Decimal`, não em `float`. Somar centavos em ponto flutuante acumula erro, e
+num sistema que fecha caixa isso aparece na conta.
 
-Três coisas aparecem em tudo que eu escrevo, e são as que eu defendo numa revisão de código:
+Histórico não se reescreve. Item de pedido guarda o preço do dia da venda, e estoque guarda os
+movimentos de entrada e saída, não só o saldo. Mudar o preço hoje não pode alterar o faturamento
+do mês passado.
 
-**Dinheiro não é `float`.** É `Decimal` no banco. Somar centavos em ponto flutuante acumula erro,
-e num sistema que fecha caixa isso aparece na conta do dono.
-
-**O histórico é imutável.** Item de pedido guarda o preço do dia da venda; movimento de estoque
-guarda a entrada e a saída, não só o saldo. Mudar o preço amanhã não pode reescrever o
-faturamento de ontem, e saldo errado sem histórico é discussão sem fim.
-
-**O caso ruim é o caso normal.** Wi-Fi cai, o cliente contesta, o alerta vira spam. Isso não é
-borda — é a terça-feira do usuário. Prefiro projetar pra ele.
+O caso ruim é o caso comum. A conexão cai, o cliente contesta o serviço, o alerta vira spam.
+Prefiro tratar isso desde o começo.
 
 ---
 
-📫 **guireale@hotmail.com** · [LinkedIn](https://www.linkedin.com/in/guilherme-reale-374615206/) · pronomes: ele/dele
+guireale@hotmail.com · [LinkedIn](https://www.linkedin.com/in/guilherme-reale-374615206/) · pronomes: ele/dele
