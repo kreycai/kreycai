@@ -56,18 +56,6 @@ jogo de GBA em português, 4.335 falas. Texto em português é mais longo que em
 isso sobrescreve o dado seguinte. Em vez de encurtar a tradução para caber, expandi a ROM de 16
 para 32 MB e reescrevi a tabela de ponteiros.
 
-### Coisas que eu levo a sério
-
-Dinheiro fica em `Decimal`, não em `float`. Somar centavos em ponto flutuante acumula erro, e
-num sistema que fecha caixa isso aparece na conta.
-
-Histórico não se reescreve. Item de pedido guarda o preço do dia da venda, e estoque guarda os
-movimentos de entrada e saída, não só o saldo. Mudar o preço hoje não pode alterar o faturamento
-do mês passado.
-
-O caso ruim é o caso comum. A conexão cai, o cliente contesta o serviço, o alerta vira spam.
-Prefiro tratar isso desde o começo.
-
 ---
 
 guireale@hotmail.com · [LinkedIn](https://www.linkedin.com/in/guilherme-reale-374615206/) · pronomes: ele/dele
