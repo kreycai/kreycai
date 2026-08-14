@@ -1,24 +1,32 @@
 ## Guilherme Reale
 
-Dev full stack, mais voltado a front-end. Estou há 3 anos na
+Desenvolvedor full stack sênior com foco em front-end. Estou há 3 anos na
 [Liberta Investimentos](https://libertainvestimentos.com.br/), um dos maiores escritórios
 credenciados à XP no Brasil: entrei terceirizado e fui efetivado depois de um ano e pouco.
 
 Trabalho no **Liberta Play / TraderUp**, a plataforma de streaming do mercado financeiro do
 grupo. É um produto com bastante coisa junta: catálogo de cursos e trilhas por perfil de
 investidor, transmissões ao vivo com analistas, chat durante as lives, e a parte de venda com
-carrinho e assinatura. O front é Angular; o chat é nosso e os players são de terceiros
-(YouTube e Panda), então boa parte do trabalho é manter e evoluir essas integrações sem
-quebrar quem está assistindo ao vivo.
+carrinho e assinatura. O chat é nosso e os players são de terceiros (YouTube e Panda), então boa
+parte do trabalho é manter e evoluir integrações sem quebrar quem está assistindo ao vivo.
+
+Atuo da definição da estrutura do projeto até a entrega: escolha de arquitetura, padronização de
+código, componentização reutilizável e revisão técnica. Quando o produto precisa, vou para o
+back-end com Node.js, NestJS e banco relacional. Isso ajuda principalmente a decidir onde cada
+responsabilidade deve ficar, em vez de empurrar complexidade para o outro lado do sistema.
+
+Stack: React · Next.js · TypeScript · Angular · React Native · Expo · TailwindCSS · Node.js ·
+NestJS · Express · Prisma · Zod · SQL · NoSQL · Azure DevOps
 
 ### Fora do trabalho
 
-Nos projetos pessoais eu uso outra stack, e é onde eu escrevo back-end: NestJS na API, Next.js
-no web, React Native/Expo no mobile, com Prisma e PostgreSQL. Organizo como monorepo
-(pnpm + Turborepo), porque esses sistemas quase sempre acabam tendo painel, API e app.
+Engenharia reversa de formatos binários não documentados, quase sempre arquivos de jogo antigo:
+mapeamento de containers proprietários, tabelas de ponteiros e edição de executáveis, com
+ferramental próprio em Python. É de onde vem meu gosto por depurar o que não tem log e por
+entender o sistema abaixo do framework.
 
-Também mexo com engenharia reversa de console antigo: patch de binário, tradução de ROM,
-formato de arquivo sem documentação.
+Nos projetos pessoais uso NestJS na API, Next.js no web e React Native/Expo no mobile, com
+Prisma e PostgreSQL, organizados como monorepo (pnpm + Turborepo).
 
 ### Projetos pessoais
 
