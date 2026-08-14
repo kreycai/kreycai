@@ -1,14 +1,26 @@
 ## Guilherme Reale
 
-Dev full stack. Trabalho com TypeScript nos dois lados: NestJS na API, Next.js no web,
-React Native/Expo no mobile, Prisma e PostgreSQL no banco. Costumo organizar os projetos
-como monorepo (pnpm + Turborepo), porque os sistemas que eu faço quase sempre têm painel,
-API e app.
+Dev full stack, mais voltado a front-end. Estou há 3 anos na
+[Liberta Investimentos](https://libertainvestimentos.com.br/), um dos maiores escritórios
+credenciados à XP no Brasil: entrei terceirizado e fui efetivado depois de um ano e pouco.
 
-Nas horas vagas mexo com engenharia reversa de console antigo: patch de binário, tradução
-de ROM, formato de arquivo sem documentação.
+Trabalho no **Liberta Play / TraderUp**, a plataforma de streaming do mercado financeiro do
+grupo. É um produto com bastante coisa junta: catálogo de cursos e trilhas por perfil de
+investidor, transmissões ao vivo com analistas, chat durante as lives, e a parte de venda com
+carrinho e assinatura. O front é Angular; o chat é nosso e os players são de terceiros
+(YouTube e Panda), então boa parte do trabalho é manter e evoluir essas integrações sem
+quebrar quem está assistindo ao vivo.
 
-### Sistemas
+### Fora do trabalho
+
+Nos projetos pessoais eu uso outra stack, e é onde eu escrevo back-end: NestJS na API, Next.js
+no web, React Native/Expo no mobile, com Prisma e PostgreSQL. Organizo como monorepo
+(pnpm + Turborepo), porque esses sistemas quase sempre acabam tendo painel, API e app.
+
+Também mexo com engenharia reversa de console antigo: patch de binário, tradução de ROM,
+formato de arquivo sem documentação.
+
+### Projetos pessoais
 
 [**esteticaautomotiva**](https://github.com/kreycai/esteticaautomotiva) — Micro-SaaS para
 estúdio de estética automotiva. O operador registra os danos do carro tocando num mapa na tela
